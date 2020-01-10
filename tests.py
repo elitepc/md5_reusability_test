@@ -3,6 +3,9 @@ from datetime import datetime
 
 from our_md5 import OurMd5
 
+file1 = 'test_files/generated_test_files/IPLeiria_msg1.png'
+file2 = 'test_files/generated_test_files/IPLeiria_msg2.png'
+
 
 def many_rounds(fname1, fname2, hash_function):
     log_file = open("tests_log.txt", "a+")
@@ -32,8 +35,8 @@ functions_to_test = [
 
 for function_to_test in functions_to_test:
     many_rounds(
-        'test_files/generated_test_files/IPLeiria_msg1.png',
-        'test_files/generated_test_files/IPLeiria_msg2.png',
+        file1,
+        file2,
         function_to_test
     )
 
