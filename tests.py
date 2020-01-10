@@ -8,11 +8,14 @@ file2 = 'test_files/generated_test_files/IPLeiria_msg2.png'
 
 
 def many_rounds(fname1, fname2, hash_function):
+    csv_file = open("tests_log.csv", "a+")
     log_file = open("tests_log.txt", "a+")
     log_file.write(":::::::::::::::::::::::::::::::::::::::::::::::: \r\n")
     log_file.write("%s: \r\n" % hash_function.__name__)
     for name in [fname1, fname2]:
         log_file.write("  %s: \r\n" % name)
+        csv_file.write("%s" % hash_function.__name__)
+        csv_file.write(";%s:" % name)
         start_time = datetime.now()
         hash_result = ''
         for i in range(1, 1000000):
@@ -20,8 +23,11 @@ def many_rounds(fname1, fname2, hash_function):
         final_time = str(datetime.now() - start_time)
         log_file.write("    Resulting hash: %s\r\n" % hash_result)
         log_file.write("    Time taken: %s\r\n" % final_time)
+        csv_file.write(";%s" % hash_result)
+        csv_file.write(";%s\n" % final_time)
     log_file.write(":::::::::::::::::::::::::::::::::::::::::::::::: \r\n")
     log_file.close()
+    csv_file.close()
 
 
 functions_to_test = [
@@ -33,6 +39,9 @@ functions_to_test = [
     OurMd5.sha1_after
 ]
 
+csv_file = open("tests_log.csv", "w")
+csv_file.write("hash_function;file_name;hash_result;time_taken\n")
+csv_file.close()
 for function_to_test in functions_to_test:
     many_rounds(
         file1,
