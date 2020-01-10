@@ -15,7 +15,7 @@ def many_rounds(fname1, fname2, hash_function):
         log_file.write("  %s: \r\n" % name)
         start_time = datetime.now()
         hash_result = ''
-        for i in range(1, 100):
+        for i in range(1, 1000000):
             hash_result = hash_function(name)
         final_time = str(datetime.now() - start_time)
         log_file.write("    Resulting hash: %s\r\n" % hash_result)
