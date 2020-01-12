@@ -3,8 +3,8 @@ from datetime import datetime
 
 from our_md5 import OurMd5
 
-file1 = 'test_files/generated_test_files/IPLeiria_msg1.png'
-file2 = 'test_files/generated_test_files/IPLeiria_msg2.png'
+file1 = 'test_files/generated_test_files/kim-png-1.png.coll.png'
+file2 = 'test_files/generated_test_files/purepng.com-kim-jong-unkim-jong-unchairmankoreasupremechild-of-kim-jong-il-1701528045204nw1x3.png.coll.png'
 
 
 def many_rounds(fname1, fname2, hash_function):
@@ -15,10 +15,10 @@ def many_rounds(fname1, fname2, hash_function):
     for name in [fname1, fname2]:
         log_file.write("  %s: \r\n" % name)
         csv_file.write("%s" % hash_function.__name__)
-        csv_file.write(";%s:" % name)
+        csv_file.write(";%s" % name)
         start_time = datetime.now()
         hash_result = ''
-        for i in range(1, 1000000):
+        for i in range(1, 10000):
             hash_result = hash_function(name)
         final_time = str(datetime.now() - start_time)
         log_file.write("    Resulting hash: %s\r\n" % hash_result)
